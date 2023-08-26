@@ -28,3 +28,7 @@
     justify-content: center; border: 1px solid black;
     align-items: center;
   }
+  .imagedesc{
+    height: 100px;
+    width:100px
+  }
