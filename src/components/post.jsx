@@ -2,7 +2,9 @@ import React from 'react'
 
 function Post ()  {
   return (
-    <div>post</div>
+    <div><>
+    this is your post
+    </></div>
   )
 }
 export default Post

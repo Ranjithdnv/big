@@ -41,7 +41,7 @@ const cllick =(chat)=>{
     // </div>
     <>
     {chat?.map((chat,index)=>( <div key={index}> <div onClick={()=>cllick(chat)} className="imagedesc" ><img src= {`http://localhost:3001/images/${chat.img}`} height="100px" width="20px" alt="" />
-    </div><div>{chat.desc}</div></div>))}
+    </div><div>s{chat.desc}</div></div>))}
      {/* <img src="http://localhost:3001/images/1693043656945_splash.jpg" height="100px" width="20px" alt="" />
     <div>messages</div> */}
     </> 
