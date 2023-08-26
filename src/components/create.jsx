@@ -11,7 +11,7 @@ function Create () {
   const upload = () => {
     const formData = new FormData()
     formData.append('file', file)
-    axios.post('http://localhost:3001/upload',formData ,{text:text})
+    axios.post('https://bigserver.onrender.com/upload',formData ,{text:text})
     .then(( res)=>{ console.log(res.data)
     setfilename([ ...filename,res.data])})
     .catch(er => console.log(er))
@@ -21,7 +21,7 @@ function Create () {
   const uploaddata = () => {
     const data = {desc:text,img:filename[filename.length*1-1]}
    setpostdata([...postdata,data])
-    axios.post('http://localhost:3001/',data)
+    axios.post('https://bigserver.onrender.com/',data)
     .then(( res)=>{ console.log(res.data)
    })
     .catch(er => console.log(er))
