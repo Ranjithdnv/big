@@ -40,7 +40,7 @@ const cllick =(chat)=>{
     //   <button type="button" onClick={upload}>Upload</button>
     // </div>
     <>
-    {chat?.map((chat,index)=>( <div key={index}> <div onClick={()=>cllick(chat)} className="imagedesc" ><img src= {`http://localhost:3001/images/${chat.img}`} height="100px" width="20px" alt="" />
+    {chat?.map((chat,index)=>( <div key={index}> <div onClick={()=>cllick(chat)} className="imagedesc" ><img src= {`https://bigserver.onrender.com/images/${chat.img}`} height="100px" width="20px" alt="" />
     </div><div>s{chat.desc}</div></div>))}
      {/* <img src="http://localhost:3001/images/1693043656945_splash.jpg" height="100px" width="20px" alt="" />
     <div>messages</div> */}
