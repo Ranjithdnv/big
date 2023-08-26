@@ -18,7 +18,7 @@ function Messages() {
 useEffect(() => {
   const getposts = async () => {
     try {
-      const res = await axios.get("http://localhost:3001/");
+      const res = await axios.get("https://bigserver.onrender.com/");
       // console.log(res.data);
       setchat(res.data);
     } catch (err) {
