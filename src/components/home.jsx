@@ -34,6 +34,9 @@ useEffect(()=>{
 // Contexts.user(userdata)
 //  Contexts.user(userdata)
 //  console.log(userdata)
+let obj= JSON.stringify(Contexts.us );
+localStorage.setItem("userdata", obj)
+console.log(JSON.parse(localStorage.getItem("userdata")))
  console.log(Contexts.us)
 setinfo(Contexts.us)
 })

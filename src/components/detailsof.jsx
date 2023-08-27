@@ -41,7 +41,7 @@ import { CountContext } from "../context";
         //  console.log(sett)
          let obj= JSON.stringify(Contexts.us );
           localStorage.setItem("userdata", obj)
-    //  console.log(JSON.parse(localStorage.getItem("userdata")))
+     console.log(JSON.parse(localStorage.getItem("userdata")))
           // JSON.parse(localStorage.getItem("user"))
         // let first=props[0]
         // const value2=props[1]
