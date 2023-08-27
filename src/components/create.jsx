@@ -1,6 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState,useContext} from 'react'
 import axios from 'axios'
+import { CountContext } from "../context";
+
 function Create () {
+  const Contexts = useContext(CountContext)
     const[text,settext]=useState("")
     const[postdata,setpostdata]=useState([])
     const[filename,setfilename]=useState([])
@@ -11,7 +14,7 @@ function Create () {
   const upload = () => {
     const formData = new FormData()
     formData.append('file', file)
-    axios.post('https://bigserver.onrender.com/upload',formData ,{text:text})
+    axios.post('http://localhost:3001/upload',formData ,{text:text})  //   https://bigserver.onrender.com/upload
     .then(( res)=>{ console.log(res.data)
     setfilename([ ...filename,res.data])})
     .catch(er => console.log(er))
@@ -19,13 +22,19 @@ function Create () {
   const filenames=[...filename]
 //   console.log(filenames.pop())
   const uploaddata = () => {
-    const data = {desc:text,img:filename[filename.length*1-1]}
+
+    const data = {  ...Contexts.us,desc:text,img:filename[filename.length*1-1]}
+    console.log(data)
    setpostdata([...postdata,data])
-    axios.post('https://bigserver.onrender.com/',data)
+    axios.post('http://localhost:3001/',data)
     .then(( res)=>{ console.log(res.data)
    })
     .catch(er => console.log(er))
   }
+  const uss= Contexts.us
+   const data = {  ...uss,desc:text,img:filename[filename.length*1-1]}
+  
+  console.log(data)
   return (<>
     <div>
         <form action="">

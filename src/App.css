@@ -9,7 +9,7 @@
   border: 1p solid black;
 }
 .main-top{ display: flex;
-  justify-content: center; border: 1px solid black;text-align: center;height: 1.5rem;
+  justify-content: center; border: 1px solid black;text-align: center;max-height: 3rem;flex-direction: row;
   align-items: top;}
 .main-container{ display: flex;flex-direction: column;
   justify-content: center; border: 1px solid black;
@@ -29,6 +29,18 @@
     align-items: center;
   }
   .imagedesc{
-    height: 100px;
-    width:100px
+    height: 300px;background-size: cover;
+    width:300px
+  }
+  .appvideo{
+    height: 300px;
+    width:300px ;
+     /* background-size: cover; */
+    object-fit: fill;
+    
+  }
+  .selectplaces{
+    width: auto;  text-align: center; display: flex; flex-direction: row;gap: 1.9rem;flex-wrap: nowrap;
+    justify-content: center; border: 1px solid black;
+    align-items: center;
   }

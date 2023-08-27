@@ -11,7 +11,9 @@ export const CountContext = React.createContext()
 
 
 export const CountProvider=({children}) =>{
-    const [us,setus] = React.useState({})
+    const [us,setus] = React.useState(JSON.parse(localStorage.getItem("userdata"))||
+      { country:"india",state:"ap",district:"westgodavari",mandal:"bhimavaram",village:"losariguttlapadu",sub_village:"vinayakapuram"   }
+      )
    const fun =()=>{
     setus("nooo")
    }
