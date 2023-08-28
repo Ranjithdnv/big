@@ -4,29 +4,36 @@ import { CountContext } from "../context";
 
 function Create () {
   const Contexts = useContext(CountContext)
+    const[category,setcategory]=useState("")
     const[text,settext]=useState("")
     const[postdata,setpostdata]=useState([])
     const[filename,setfilename]=useState([])
+    const[uploadchange,setuploadchange]=useState(false)
     const submit=()=>{
 
     }
     const [file, setFile] = useState()
-  const upload = () => {
+  const upload = async() => {
+    setuploadchange(true)
     const formData = new FormData()
     formData.append('file', file)
-    axios.post('http://localhost:3001/upload',formData ,{text:text})  //   https://bigserver.onrender.com/upload
+    await axios.post('http://localhost:3001/upload',formData ,{text:text})  //   https://bigserver.onrender.com/upload
     .then(( res)=>{ console.log(res.data)
+     
+      console.log(0)
     setfilename([ ...filename,res.data])})
     .catch(er => console.log(er))
+    setuploadchange(false)
   }
+  
   const filenames=[...filename]
 //   console.log(filenames.pop())
-  const uploaddata = () => {
+  const uploaddata = async() => {
 
-    const data = {  ...Contexts.us,desc:text,img:filename[filename.length*1-1]}
+    const data = {  ...Contexts.us,desc:text,img:filename[filename.length*1-1],category:category}
     console.log(data)
    setpostdata([...postdata,data])
-    axios.post('http://localhost:3001/',data)
+   await  axios.post('http://localhost:3001/',data)
     .then(( res)=>{ console.log(res.data)
    })
     .catch(er => console.log(er))
@@ -34,22 +41,31 @@ function Create () {
   const uss= Contexts.us
    const data = {  ...uss,desc:text,img:filename[filename.length*1-1]}
   
-  console.log(data)
+  // console.log(data)
   return (<>
-    <div>
-        <form action="">
+    <div className='create-box'> <div className=' create-innerbox'>
+        <form className=' create-innerbox' action="">
            <div><img src="" alt="" />
 </div> 
 <div> 
-    <input type="text" value={text} onChange={(e)=>{settext(e.target.value)}}/>
+    <input type="text" value={text} placeholder='describe' onChange={(e)=>{settext(e.target.value)}}/>
+   
 </div>
-        </form>
-        <button onClick={uploaddata}>postme</button>
+<div> <input  type="text"placeholder='category' value={category} onChange={(e)=>{setcategory(e.target.value)}}/></div>
+<div>  <button className='link' onClick={uploaddata}>postme</button></div> 
+<div><label htmlFor="fileupload"><div className='label shadow'>add file</div></label></div>
+
+<div><div className='remove'> <input className='link' id ="fileupload" type="file" onChange={(e) => setFile(e.target.files[0])}/>
+
+</div>
+    
+   {  uploadchange?(<div className='link'>uploading..</div>):(<button type="button" className='link' onClick={upload}>Upload</button>)}
+   </div>
+</form>
+</div>
     </div>
-     <div>
-     <input type="file" onChange={(e) => setFile(e.target.files[0])}/>
-     <button type="button" onClick={upload}>Upload</button>
-   </div></>
+     
+   </>
   )
 }
 export default Create

@@ -11,20 +11,24 @@ const [info ,setinfo]=useState(false)
 const [compo ,setcompo]=useState(false)
 const [Detail ,setDetail]=useState(false)
 const [World ,setWorld]=useState(false)
-const [State ,setState]=useState(false)
-const [district ,setdistrict]=useState(false)
-const [town ,settown]=useState(false)
-const [category ,setcategory]=useState(false)
-const array = {category: ["sports","education","bussiness"],name:["d","e",'f'],country:["india","pak","bangladesh","srilanka"]}
+// // const [Four ,setFour]=useState(["sports","start_up","pay for work","find-bussiness-partner"])
+// const [district ,setdistrict]=useState(false)
+// const [chatss ,setchatss]=useState([])
+// const [category ,setcategory]=useState(false)
+// const array = {category: ["sports","education","bussiness"],name:["d","e",'f'],country:["india","pak","bangladesh","srilanka"]}
 //  console.log(Contexts.us)
   // Contexts.user({a:"b"})
-console.log(array.category)
-console.log(World)
-console.log(district)
+// console.log(array.category)
+// console.log(World)
+// console.log(district)
 const func = ()=>{
   setWorld((prev)=>!prev)
   // const Statez={country:"india"}
   // Contexts.user(Statez)
+}
+const setchats=(data)=>{
+setchats(data)
+console.log(data)
 }
 useEffect(()=>{
 
@@ -36,8 +40,8 @@ useEffect(()=>{
 //  console.log(userdata)
 let obj= JSON.stringify(Contexts.us );
 localStorage.setItem("userdata", obj)
-console.log(JSON.parse(localStorage.getItem("userdata")))
- console.log(Contexts.us)
+// console.log(JSON.parse(localStorage.getItem("userdata")))
+//  console.log(Contexts.us)
 setinfo(Contexts.us)
 })
 const Details=(value)=>{
@@ -45,17 +49,22 @@ setDetail(!Detail)
 setcompo(value)
 
 }
+
+
   return (
     <div className='homeContainer'>
-        <div className='header'>header <div className="motive">motive</div></div>
+        <div className='header'>
+         
+           <div className="motive  link">motive</div> <Link className='link' to="/login">account</Link></div>
 
         <div className='main'>
-<div >
+<div className='main-containerr'>
  <div className='main-top'>
-   <div onClick={()=>Details(0)}> {info.country}</div><div onClick={()=>Details(1)}>{info.state}</div><div onClick={()=>Details(2)}>{info.district}</div>
-   <div onClick={()=>Details(3)}>{info.mandal}</div><div onClick={()=>Details(4)}>{info.village}</div><div onClick={()=>Details(5)}>{info.sub_village}</div> 
+   <div className='link shadow' onClick={()=>Details(0)}> {info.country}</div><div className='link shadow' onClick={()=>Details(1)}>{info.state}</div><div className='link shadow'  onClick={()=>Details(2)}>{info.district}</div>
+   <div className='link shadow' onClick={()=>Details(3)}>{info.mandal}</div><div className='link shadow' onClick={()=>Details(4)}>{info.village}</div><div className='link shadow' onClick={()=>Details(5)}>{info.sub_village}</div>
+   {/* <div onClick={()=>Details(6)}>{info.category}</div>  */}
    </div >
-   <div >{Detail&& <Detailsof compo={compo} num="country"/>}</div>
+   <div >{Detail&& <Detailsof compo={compo} setchats={setchats} num="country"/>}</div>
 
    
     {/* <div className="select"onClick={func}>world</div>
@@ -74,17 +83,21 @@ setcompo(value)
     
 </div>
 <div className='main-container'>
-<div className='four-contain'>    <div className="four">four</div>
-   <Link to="/create"> <div className="create" >create</div></Link></div>
+<div className='four-contain'> 
+   {/* <div className="four">four */}
+{/* {Four.map((fours)=>(<><button onClick={()=> fourselect({country:fours})}>{fours}</button></>))} */}
+ {/* </div>  */}
+   {/* <Link className="create link"  to="/create "> <div className="create link" >create</div></Link> */}
+   </div>
  {/* <div className="messages-four">four</div> */}
- <div className="messages"><Messages/></div>
+ <div className="messages"><Messages /></div>
 </div>
 
 
         </div>
         
         
-         {/* <div className='footer'>foooter {Contexts}</div> */}
+         <div className='footer'></div>
     </div>
   )
 }

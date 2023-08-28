@@ -3,6 +3,7 @@ import './App.css';
 import terms from "./components/terms"
 import Create from "./components/create"
 import Login from "./components/login"
+import Signup from "./components/signup"
 import Post from "./components/post"
 import Contact from "./components/contact"
 import Home from "./components/home"
@@ -18,6 +19,10 @@ function App() {
           <Route
           path="/create"
           element={<Create /> }
+        />
+         <Route
+          path="/signup"
+          element={<Signup /> }
         />
           <Route
           path="/chatwithpost"

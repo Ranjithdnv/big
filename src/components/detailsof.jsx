@@ -1,6 +1,6 @@
 import React,{useContext} from 'react'
 import { CountContext } from "../context";
- function Detailsof  ({compo,num})  {
+ function Detailsof  ({compo,num,setchats})  {
     const Contexts = useContext(CountContext)
     const states=["ap","tamilnadu","odisa","bangalore","karnataka"]
     const country=["india","paki","bangladesh","srilanka","nepal"]
@@ -8,7 +8,8 @@ import { CountContext } from "../context";
     const mandal=["Narasapuram","Palakollu","Tadepalligudem","Tanuku","Bhimavaram"]
     const district=["west_godavari","Prakasam","east_godavari","krishna","nellore","Dr. B. R. Ambedkar Konaseema","Bapatla", "Eluru", "Rayalaseema","Srikakulam","Parvathipuram Manyam","Kakinada"]
     const sub_village=["vinayakapuram","nagindrapuram","deyalatipa","mattagunta","pathapadu"]
-    const array =[country,states,district,mandal,village,sub_village]
+    const category=["sports","education"]
+    const array =[country,states,district,mandal,village,sub_village,category]
    
     const detailsupdate=(props)=>{
         
@@ -32,6 +33,9 @@ import { CountContext } from "../context";
           if( compo===5){
             value2={sub_village:props}
           }
+          if( compo===6){
+            value2={category:props}
+          }
           Contexts.user({...Contexts.us,...value2})
          console.log( Contexts.us)
         //  const sett={country:Contexts.us.country,state:Contexts.us.state,
@@ -42,6 +46,8 @@ import { CountContext } from "../context";
          let obj= JSON.stringify(Contexts.us );
           localStorage.setItem("userdata", obj)
      console.log(JSON.parse(localStorage.getItem("userdata")))
+
+// setchats(Contexts.us)
           // JSON.parse(localStorage.getItem("user"))
         // let first=props[0]
         // const value2=props[1]
@@ -57,6 +63,7 @@ import { CountContext } from "../context";
 // console.log(value2)
 //console.log({...Contexts.us,...value2})
 //          Contexts.user({...Contexts.us,...value2})
+
     }
   return (
     <div  className='selectplaces' >{array[compo].map((details)=>(<><div  onClick={()=> detailsupdate(`${details}`)}>{details}</div></>))}</div>
