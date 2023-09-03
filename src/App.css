@@ -33,9 +33,11 @@
     height: 300px;background-size: cover;
     width:300px
   }
+  .imgcontain{display: flex;justify-content: center;}
   .appvideo{
     height: 300px;
     width:300px ;
+    display: flex;justify-content: center;
      /* background-size: cover; */
     object-fit: fill;
     
@@ -96,4 +98,13 @@
 .homeContainer{
   padding: 2%;
   background-color: rgba(0, 255, 255,.4);
+}
+.appvideocontain{display: flex;justify-content: center;align-items: center;}
+.mc-contain{
+  display: flex;
+  justify-content: center;flex-wrap: wrap;
+  align-items: center;gap: 1rem;
+}
+.mc-box{
+  height: 200px;width: 200px;background-color: aqua;
 }

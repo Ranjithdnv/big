@@ -1,5 +1,5 @@
 import React ,{useContext ,useState} from 'react'
-import "../App.css"
+import "./home.css"
 import Messages from './messages';
 import Detailsof from './detailsof';
 import { CountContext } from "../context";
@@ -60,7 +60,7 @@ setcompo(value)
         <div className='main'>
 <div className='main-containerr'>
  <div className='main-top'>
-   <div className='link shadow' onClick={()=>Details(0)}> {info.country}</div><div className='link shadow' onClick={()=>Details(1)}>{info.state}</div><div className='link shadow'  onClick={()=>Details(2)}>{info.district}</div>
+   <div className='link shadow main--box' onClick={()=>Details(0)}> {info.country}</div><div className='link shadow' onClick={()=>Details(1)}>{info.state}</div><div className='link shadow'  onClick={()=>Details(2)}>{info.district}</div>
    <div className='link shadow' onClick={()=>Details(3)}>{info.mandal}</div><div className='link shadow' onClick={()=>Details(4)}>{info.village}</div><div className='link shadow' onClick={()=>Details(5)}>{info.sub_village}</div>
    {/* <div onClick={()=>Details(6)}>{info.category}</div>  */}
    </div >

@@ -43,7 +43,7 @@ useEffect(() => {
   const getposts = async () => {
     try {
       const res = await axios.get("http://localhost:3001/",{headers:{"Authorization":`Bearer ${localStorage?.getItem("token")||null}`}});//   https://bigserver.onrender.com/
-      // console.log(res.data);
+      console.log(res.data);
       setchat(res.data);
     } catch (err) {
       console.log(err);
@@ -60,7 +60,7 @@ useEffect(() => {
   //   }
   // };
   // getpostsfilter();
-  console.log("hhhhhhhhhhhh")
+  console.log(chat)
 }, [Contexts.us.category]);
 const navi = useNavigate();
 const cllick =(chat)=>{
@@ -69,8 +69,18 @@ const cllick =(chat)=>{
   Contexts.user({a:"b",messenger:chat?._id})
   navi("/chatwithpost");
 }
+const messagechat=async(value)=>{
+
+  // console.log({...Contexts.us,...value})
+
+  Contexts.user({...Contexts.us,...value})
+  // console.log(Contexts.us)
+  navi("/messagechat");
+    
+     }
 // console.log((chat[3].img).split(".")[1])
 console.log(0)
+
    return (
     <>
     <div className="selectplaces">{Four.map((fours)=>(<button className='link' onClick={()=> fourselect({category:fours})}>{fours}</button>))}</div>
@@ -81,8 +91,8 @@ console.log(0)
        <button type="button" onClick={upload}>Upload</button>
      </div>                 //       `https://bigserver.onrender.com/images/${chat.img}` */}
     <>
-    {chat?.map((chat,index)=>( <div key={index}> {(chat.img)?.split(".")[1]==="jpg"?( <div onClick={()=>cllick(chat)} className="imagedesc" ><img className="imagedesc"  src= {`http://localhost:3001/images/${chat.img}`}  alt="" />  
-    </div>):( <div className="appvideo"   >
+    {chat?.map((chat,index)=>( <div className="imgcontain" onClick={()=>messagechat({message:chat._id})} key={index}> {(chat.img)?.split(".")[1]==="jpg"?( <div onClick={()=>cllick(chat)} className="imagedesc" ><img className="imagedesc"  src= {`http://localhost:3001/images/${chat.img}`}  alt="" />  
+    </div>):( <div className="appvideocontain"   >
         <video className="appvideo" controls loop src= {`http://localhost:3001/images/${chat.img}`} /> </div>)}<div className='link'>{chat.desc}</div></div>))}             
      {/* <img src="http://localhost:3001/images/1693043656945_splash.jpg" height="100px" width="20px" alt="" />
     <div>messages</div> */}

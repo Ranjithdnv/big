@@ -5,6 +5,7 @@ import Create from "./components/create"
 import Login from "./components/login"
 import Signup from "./components/signup"
 import Post from "./components/post"
+import Messagechat from "./components/messagechat"
 import Contact from "./components/contact"
 import Home from "./components/home"
 import {Route,Routes} from "react-router-dom"
@@ -19,6 +20,10 @@ function App() {
           <Route
           path="/create"
           element={<Create /> }
+        />
+          <Route
+          path="/messagechat"
+          element={<Messagechat /> }
         />
          <Route
           path="/signup"
