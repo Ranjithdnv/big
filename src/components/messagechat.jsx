@@ -38,7 +38,11 @@ function Messagechat() {
   //
   useEffect(() => {
     const cham = async () => {
+      let obj = JSON.stringify(Contexts.us);
+      localStorage.setItem("userdata", obj);
       console.log(Contexts.us);
+      console.log(Contexts.us.messageid_);
+      console.log(JSON.parse(localStorage.getItem("userdata")));
       await axios
         .get(
           "https://bigserver.onrender.com/postmessagesearch/" +
