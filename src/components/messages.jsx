@@ -94,7 +94,7 @@ function Messages({ chatss }) {
   };
   // console.log((chat[3].img).split(".")[1])
   console.log(0);
-  console.log(chat[20]);
+  console.log(chat[0]);
   return (
     <>
       <div className="fourtop">

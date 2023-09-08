@@ -163,6 +163,9 @@ button:hover {
   width: 1rem;
   border-radius: 0.5rem;
 } */
+.nono {
+  display: none;
+}
 .motive-animation {
   overflow: hidden;
   animation: example 3s ease-out 1s infinite alternate;

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { CountContext } from "../context";
-function Detailsof({ compo = 0, num, setchats }) {
+function Detailsof({ compo = 10, num, setchats }) {
   const Contexts = useContext(CountContext);
   const states = ["ap", "tamilnadu", "odisa", "bangalore", "karnataka"];
   const country = ["india", "paki", "bangladesh", "srilanka", "nepal"];
@@ -102,37 +102,25 @@ function Detailsof({ compo = 0, num, setchats }) {
     //console.log({...Contexts.us,...value2})
     //          Contexts.user({...Contexts.us,...value2})
   };
+  console.log(compo);
+  console.log(compo);
   return (
     <>
-      {compo ? (
-        <div className="selectplaces">
-          {array[compo]?.map((details, index) => (
-            <div
-              key={index}
-              className="selectplace"
-              onClick={() => detailsupdate(`${details}`)}
-            >
-              {details}
-            </div>
-          ))}
-        </div>
-      ) : (
-        <>
-          <div className="selectplaces">
-            {array[0]?.map((details, index) => (
-              <>
-                <div
-                  key={index}
-                  className="selectplace"
-                  onClick={() => detailsupdate(`${details}`)}
-                >
-                  {details}
-                </div>
-              </>
-            ))}
+      <div className={compo !== undefined ? "selectplaces" : "nono"}>
+        {array[compo]?.map((details, index) => (
+          <div
+            key={index}
+            className="selectplace"
+            onClick={() => detailsupdate(`${details}`)}
+          >
+            {details}
           </div>
-        </>
-      )}
+        ))}
+      </div>
+      {/* ) : (
+         <>
+         <div className="selectplaces">
+             {array[0]?.map((details, index) => ( */}
     </>
 
     // <div className="selectplaces">

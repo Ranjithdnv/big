@@ -9,7 +9,9 @@ function Messagecheck({ m }) {
       {/* messagecheck */}
       <div className={m.mid === Contexts.us.userid ? "first" : "last"}>
         <div className="spaone">
-          {/* <div>{m.mname}</div> */}
+          <span>
+            <div className="yourname"> {m.mname}</div>
+          </span>
           <span className="spa">{m.message}</span>
         </div>
       </div>

@@ -31,6 +31,10 @@ function Messagechat() {
     //https://sock-hepv.onrender.com
     // chattyou();
   }, [message]);
+  useEffect(() => {
+    // socket?.emit("newUser", user);
+    socket?.emit("newUser", Contexts.us.userid);
+  }, []);
   //
   useEffect(() => {
     const cham = async () => {
@@ -49,6 +53,15 @@ function Messagechat() {
   }, []);
 
   const chattyou = async () => {
+    const func = () => {
+      console.log(Contexts.us.username);
+      socket.emit("sendText", {
+        message: textref.current.value,
+        mname: Contexts.us.username,
+        mid: Contexts.us.userid,
+      });
+    };
+    func();
     // console.log(Contexts.us);
     // console.log(Contexts.us.message);
     // let obj = JSON.stringify(Contexts.us);
@@ -75,22 +88,6 @@ function Messagechat() {
 
   //
   console.log(message);
-  useEffect(() => {
-    console.log(user !== null);
-    if (user !== null) {
-      socket?.emit("newUser", user);
-    }
-    console.log(user);
-  }, [user]);
-
-  const func = () => {
-    console.log(Contexts.us.username);
-    socket.emit("sendText", {
-      message: textref.current.value,
-      mname: Contexts.us.username,
-      mid: Contexts.us.userid,
-    });
-  };
 
   useEffect(() => {
     socket?.on("getText", (data) => {
