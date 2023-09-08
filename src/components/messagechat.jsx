@@ -28,7 +28,7 @@ function Messagechat() {
   useEffect(() => {
     tobottomref.current?.scrollIntoView();
     setSocket(io("https://sock-hepv.onrender.com"));
-    //https://sock-hepv.onrender.com
+
     // chattyou();
   }, [message]);
   useEffect(() => {
