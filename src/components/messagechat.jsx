@@ -16,6 +16,7 @@ function Messagechat() {
   const [username, setUsername] = useState("");
   const [usernamess, setUsernamess] = useState("");
   const [user, setUser] = useState("");
+  const [tame, settame] = useState(0);
   const [message, setmessage] = useState([]);
   const [socket, setSocket] = useState(null);
   const [notifications, setNotifications] = useState([]);
@@ -25,24 +26,45 @@ function Messagechat() {
     // textref.current = e.target.value;
   };
 
-  useEffect(() => {
-    tobottomref.current?.scrollIntoView();
-    setSocket(io("https://sock-hepv.onrender.com"));
-    socket?.emit("newUser", Contexts.us.userid);
-    // chattyou();
-  }, [message]);
+  useEffect(
+    () => {
+      tobottomref.current?.scrollIntoView();
+      setSocket(io("https://sock-hepv.onrender.com")); //https://sock-hepv.onrender.com //http://localhost:5000
+      // socket?.emit("newUser", Contexts.us.userid);
+      // chattyou();
+    },
+    [
+      //message
+    ]
+  );
   useEffect(() => {
     // socket?.emit("newUser", user);
     socket?.emit("newUser", Contexts.us.userid);
-  }, []);
+  }, [message]);
+  //
+  useEffect(() => {
+    socket?.on("joinedroom", (b) => {
+      console.log("joinffed");
+      setmessage((prev) => [...prev, b]);
+      console.log(b);
+    });
+  }, [socket]);
+  const a = 12345;
+  useEffect(() => {
+    socket?.emit("join", Contexts.us.messageid_);
+    // setTimeout(() => {
+    //   socket.emit("memberjoined");
+    // }, 3000);
+  }, [message]);
+
   //
   useEffect(() => {
     const cham = async () => {
       let obj = JSON.stringify(Contexts.us);
       localStorage.setItem("userdata", obj);
-      console.log(Contexts.us);
-      console.log(Contexts.us.messageid_);
-      console.log(JSON.parse(localStorage.getItem("userdata")));
+      // console.log(Contexts.us);
+      // console.log(Contexts.us.messageid_);
+      // console.log(JSON.parse(localStorage.getItem("userdata")));
       await axios
         .get(
           "https://bigserver.onrender.com/postmessagesearch/" +
@@ -56,40 +78,92 @@ function Messagechat() {
     };
     cham();
   }, []);
-
-  const chattyou = async () => {
-    const func = () => {
-      console.log(Contexts.us.username);
-      socket.emit("sendText", {
-        message: textref.current.value,
-        mname: Contexts.us.username,
-        mid: Contexts.us.userid,
-      });
-    };
-    func();
-    console.log(Contexts.us);
-    // console.log(Contexts.us.message);
-    // let obj = JSON.stringify(Contexts.us);
-    // localStorage.setItem("userdata", obj);
-    // console.log(Contexts.us);
-    console.log(textref.current.value);
-    await axios
-      .put(
-        "https://bigserver.onrender.com/postmessagesearch/" +
-          Contexts.us.messageid_ +
-          "/like",
-        {
+  useEffect(() => {
+    const chattyou = async () => {
+      // Event.preventDefault();
+      const func = () => {
+        // Event.preventDefault();
+        console.log(Contexts.us.username);
+        socket?.emit("sendyourmessage", {
           message: textref.current.value,
           mname: Contexts.us.username,
           mid: Contexts.us.userid,
-        } //https://bigserver.onrender.com/postmessagesearch
-      )
-      .then((res) => {
-        console.log(res.data.messages);
-        setmessage(res.data.messages);
-      })
-      .catch((er) => console.log(er));
-  };
+          mconv: Contexts.us.messageid_,
+        });
+        // socket?.emit("sendText", {
+        //   message: textref.current.value,
+        //   mname: Contexts.us.username,
+        //   mid: Contexts.us.userid,
+        // });
+      };
+      func();
+      console.log(Contexts.us);
+      // console.log(Contexts.us.message);
+      // let obj = JSON.stringify(Contexts.us);
+      // localStorage.setItem("userdata", obj);
+      // console.log(Contexts.us);
+      console.log(textref.current.value);
+      await axios
+        .put(
+          "https://bigserver.onrender.com/postmessagesearch/" +
+            Contexts.us.messageid_ +
+            "/like",
+          {
+            message: textref.current.value,
+            mname: Contexts.us.username,
+            mid: Contexts.us.userid,
+          } //https://bigserver.onrender.com/postmessagesearch
+        )
+        .then((res) => {
+          console.log(res.data.messages);
+          setmessage(res.data.messages);
+        })
+        .catch((er) => console.log(er));
+    };
+    chattyou();
+  }, [tame]);
+
+  // const chattyou = async () => {
+  //   // Event.preventDefault();
+  //   const func = () => {
+  //     // Event.preventDefault();
+  //     console.log(Contexts.us.username);
+  //     socket?.emit("sendyourmessage", {
+  //       message: textref.current.value,
+  //       mname: Contexts.us.username,
+  //       mid: Contexts.us.userid,
+  //       mconv: Contexts.us.messageid_,
+  //     });
+  //     socket.emit("sendText", {
+  //       message: textref.current.value,
+  //       mname: Contexts.us.username,
+  //       mid: Contexts.us.userid,
+  //     });
+  //   };
+  //   func();
+  //   console.log(Contexts.us);
+  //   // console.log(Contexts.us.message);
+  //   // let obj = JSON.stringify(Contexts.us);
+  //   // localStorage.setItem("userdata", obj);
+  //   // console.log(Contexts.us);
+  //   console.log(textref.current.value);
+  //   await axios
+  //     .put(
+  //       "https://bigserver.onrender.com/postmessagesearch/" +
+  //         Contexts.us.messageid_ +
+  //         "/like",
+  //       {
+  //         message: textref.current.value,
+  //         mname: Contexts.us.username,
+  //         mid: Contexts.us.userid,
+  //       } //https://bigserver.onrender.com/postmessagesearch
+  //     )
+  //     .then((res) => {
+  //       console.log(res.data.messages);
+  //       setmessage(res.data.messages);
+  //     })
+  //     .catch((er) => console.log(er));
+  // };
 
   //
   console.log(message);
@@ -102,6 +176,7 @@ function Messagechat() {
       console.log("worked");
     });
   }, [socket]);
+  console.log(socket);
   return (
     <div className="mc-contain">
       <div className="container">
@@ -154,7 +229,13 @@ function Messagechat() {
               cols="5"
               rows="3"
             ></textarea>{" "}
-            <button className="sendtwo" onClick={chattyou}>
+            <button
+              className="sendtwo"
+              onClick={() => {
+                settame(!tame);
+              }}
+              // onClick={chattyou}
+            >
               send
             </button>
             <div> </div>
