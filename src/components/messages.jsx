@@ -80,16 +80,16 @@ function Messages({ chatss }) {
     console.log(chat);
   }, [Contexts.us.category]);
   const navi = useNavigate();
-  const cllick = (chat) => {
-    Contexts.user({ a: "b", messenger: chat?._id });
-    navi("/chatwithpost");
-  };
+  // const cllick = (chat) => {
+  //   Contexts.user({ a: "b", messenger: chat?._id });
+  //   navi("/chatwithpost");
+  // };
   const messagechat = async (value) => {
     console.log({ ...Contexts.us, ...value });
     console.log(value);
     Contexts.user({ ...Contexts.us, ...value });
-    // let obj = JSON.stringify(Contexts.us);
-
+    let obj = JSON.stringify(Contexts.us);
+    localStorage.setItem("userdata", obj);
     navi("/messagechat");
   };
   // console.log((chat[3].img).split(".")[1])
@@ -134,7 +134,10 @@ function Messages({ chatss }) {
             {" "}
             {chat.img?.split(".")[1] === "jpg" ||
             chat.img?.split(".")[1] === "png" ? (
-              <div onClick={() => cllick(chat)} className="imagedesc">
+              <div
+                // onClick={() => cllick(chat)}
+                className="imagedesc"
+              >
                 <img
                   className="imagedesc"
                   src={

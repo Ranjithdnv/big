@@ -38,6 +38,7 @@ function Messagechat() {
   //
   useEffect(() => {
     const cham = async () => {
+      console.log(Contexts.us);
       await axios
         .get(
           "https://bigserver.onrender.com/postmessagesearch/" +
@@ -62,7 +63,7 @@ function Messagechat() {
       });
     };
     func();
-    // console.log(Contexts.us);
+    console.log(Contexts.us);
     // console.log(Contexts.us.message);
     // let obj = JSON.stringify(Contexts.us);
     // localStorage.setItem("userdata", obj);
