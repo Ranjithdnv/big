@@ -88,8 +88,8 @@ function Messages({ chatss }) {
     console.log({ ...Contexts.us, ...value });
     console.log(value);
     Contexts.user({ ...Contexts.us, ...value });
-    let obj = JSON.stringify(Contexts.us);
-    localStorage.setItem("userdata", obj);
+    // let obj = JSON.stringify(Contexts.us);
+    // localStorage.setItem("userdata", obj);
     navi("/messagechat");
   };
   // console.log((chat[3].img).split(".")[1])
@@ -126,6 +126,11 @@ function Messages({ chatss }) {
        <button type="button" onClick={upload}>Upload</button>
      </div>                 //       `https://bigserver.onrender.com/images/${chat.img}` */}
       <div className="im-age-container">
+        <div className="imagedesc">
+          {" "}
+          <img src="./god.jpg" className="imagedesc" />
+        </div>
+
         {chat?.map((chat, index) => (
           <div
             onClick={() => messagechat({ messageid_: chat.conversation })}

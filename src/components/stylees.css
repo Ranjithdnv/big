@@ -98,16 +98,28 @@ button {
   align-items: center;
 }
 .sendone {
-  flex: 5;
+  flex: 4;
   min-height: 2rem;
-  min-width: 10rem;
+  min-width: 15rem;
   max-width: 20rem;
   border-radius: 1rem;
 }
+.sendone:hover {
+  box-shadow: 0px 0px 26px rgb(13 229 35 / 70%);
+  filter: brightness(200%);
+}
 .sendtwo {
   flex: 1;
-  min-height: 2.5rem;
+  min-height: 3rem;
   max-width: 5rem;
+  box-shadow: 5px 5px 5px black;
+  opacity: 0.8;
+  filter: blur(10%);
+  transition: all 1s ease-in;
+  position: relative;
+}
+.sendtwo:hover {
+  transform: scale(1.2);
 }
 
 .main-message-background-check {

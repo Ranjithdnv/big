@@ -1,5 +1,17 @@
 .imagedesc {
   height: 300px;
+  border-radius: 1rem;
+  overflow: hidden;
   width: 300px;
   background-size: cover;
+  margin-bottom: 1rem;
+}
+.video-text {
+  margin-bottom: 1rem;
+  transition: all 1s ease-in infinite;
+}
+.video-text:hover {
+  /* transform: skewX(20deg);
+  transform: skewY(10deg); */
+  transform: scale(1.6) skewY(-10deg);
 }
