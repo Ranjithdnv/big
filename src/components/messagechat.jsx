@@ -46,7 +46,7 @@ function Messagechat() {
   useEffect(() => {
     socket?.on("joinedroom", (b) => {
       console.log("joinffed");
-      // setmessage((prev) => [...prev, b]);
+      setmessage((prev) => [...prev, b]);
       console.log(b);
     });
   }, [socket]);
@@ -138,11 +138,11 @@ function Messagechat() {
   //       mid: Contexts.us.userid,
   //       mconv: Contexts.us.messageid_,
   //     });
-  //     socket.emit("sendText", {
-  //       message: textref.current.value,
-  //       mname: Contexts.us.username,
-  //       mid: Contexts.us.userid,
-  //     });
+  //     // socket.emit("sendText", {
+  //     //   message: textref.current.value,
+  //     //   mname: Contexts.us.username,
+  //     //   mid: Contexts.us.userid,
+  //     // });
   //   };
   //   func();
   //   console.log(Contexts.us);
