@@ -13,9 +13,9 @@ function Messagechat() {
   // useEffect(() => {});
   // const [text, settext] = useState("");
 
-  const [username, setUsername] = useState("");
-  const [usernamess, setUsernamess] = useState("");
-  const [user, setUser] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [usernamess, setUsernamess] = useState("");
+  // const [user, setUser] = useState("");
   const [tame, settame] = useState(0);
   const [message, setmessage] = useState([]);
   const [socket, setSocket] = useState(null);
@@ -28,7 +28,7 @@ function Messagechat() {
 
   useEffect(
     () => {
-      tobottomref.current?.scrollIntoView();
+      // tobottomref.current?.scrollIntoView();
       setSocket(io("https://sock-hepv.onrender.com")); //https://sock-hepv.onrender.com //http://localhost:5000
       // socket?.emit("newUser", Contexts.us.userid);
       // chattyou();
@@ -40,22 +40,23 @@ function Messagechat() {
   useEffect(() => {
     // socket?.emit("newUser", user);
     socket?.emit("newUser", Contexts.us.userid);
+    tobottomref.current?.scrollIntoView();
   }, [message]);
   //
   useEffect(() => {
     socket?.on("joinedroom", (b) => {
       console.log("joinffed");
-      setmessage((prev) => [...prev, b]);
+      // setmessage((prev) => [...prev, b]);
       console.log(b);
     });
   }, [socket]);
-  const a = 12345;
+
   useEffect(() => {
     socket?.emit("join", Contexts.us.messageid_);
     // setTimeout(() => {
     //   socket.emit("memberjoined");
     // }, 3000);
-  }, [message]);
+  }, [message]); // seee late//
 
   //
   useEffect(() => {
@@ -65,13 +66,14 @@ function Messagechat() {
       // console.log(Contexts.us);
       // console.log(Contexts.us.messageid_);
       // console.log(JSON.parse(localStorage.getItem("userdata")));
+
       await axios
         .get(
           "https://bigserver.onrender.com/postmessagesearch/" +
             Contexts.us.messageid_
         )
         .then((res) => {
-          console.log(res.data.post.messages);
+          // console.log(res.data.post.messages);
           setmessage(res.data.post.messages);
         })
         .catch((er) => console.log(er));
@@ -97,28 +99,30 @@ function Messagechat() {
         // });
       };
       func();
-      console.log(Contexts.us);
+      // console.log(Contexts.us);
       // console.log(Contexts.us.message);
       // let obj = JSON.stringify(Contexts.us);
       // localStorage.setItem("userdata", obj);
       // console.log(Contexts.us);
       console.log(textref.current.value);
-      await axios
-        .put(
-          "https://bigserver.onrender.com/postmessagesearch/" +
-            Contexts.us.messageid_ +
-            "/like",
-          {
-            message: textref.current.value,
-            mname: Contexts.us.username,
-            mid: Contexts.us.userid,
-          } //https://bigserver.onrender.com/postmessagesearch
-        )
-        .then((res) => {
-          console.log(res.data.messages);
-          setmessage(res.data.messages);
-        })
-        .catch((er) => console.log(er));
+      if (textref.current.value) {
+        await axios
+          .put(
+            "https://bigserver.onrender.com/postmessagesearch/" +
+              Contexts.us.messageid_ +
+              "/like",
+            {
+              message: textref.current.value,
+              mname: Contexts.us.username,
+              mid: Contexts.us.userid,
+            } //https://bigserver.onrender.com/postmessagesearch
+          )
+          .then((res) => {
+            // console.log(res.data.messages);
+            setmessage(res.data.messages);
+          })
+          .catch((er) => console.log(er));
+      }
     };
     chattyou();
   }, [tame]);
@@ -166,17 +170,17 @@ function Messagechat() {
   // };
 
   //
-  console.log(message);
+  // console.log(message);
 
   useEffect(() => {
     socket?.on("getText", (data) => {
       // setNotifications((prev) => [...prev, data]);
       console.log(data);
-      setmessage((prev) => [...prev, data]);
+      // setmessage((prev) => [...prev, data]);
       console.log("worked");
     });
   }, [socket]);
-  console.log(socket);
+  // console.log(socket);
   return (
     <div className="mc-contain">
       <div className="container">
@@ -238,7 +242,7 @@ function Messagechat() {
             >
               send
             </button>
-            <div> </div>
+            {/* <div> </div> */}
           </div>
           <div ref={tobottomref} />
         </div>
