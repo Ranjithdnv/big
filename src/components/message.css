@@ -4,6 +4,66 @@
   align-items: center;
   flex-direction: column;
 }
+.imagedescover {
+  overflow: hidden;
+  /* border: red 4px solid; */
+  padding-bottom: -1rem;
+}
+.im-age-containerhover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.imagedescover:hover {
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+}
+.im-age-container:hover .im-age-containerhover:not(:hover) {
+  transform: scale(0.8);
+  background-image: linear-gradient(
+    to top right,
+    rgba(221, 14, 124),
+    rgb(91, 7, 248),
+    orangered,
+    rgb(0, 255, 106)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.im-age-container:hover .im-age-containerhover:hover .imagedesc:hover {
+  background-size: contain;
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.8);
+  color: white;
+  /* filter: blur(10px); */
+  scale: 1.4;
+}
 .video-text {
   text-align: center;
+  background-image: linear-gradient(
+    to top right,
+    rgba(221, 14, 124),
+    rgb(91, 7, 248),
+    orangered,
+    rgb(0, 255, 106)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.taggs-create {
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 3rem;
+  color: aqua;
+  padding-block: auto;
+  padding-inline: 0.5rem;
+  background-color: rgb(0, 0, 9);
+  border: 2px solid rgb(99, 98, 98);
+  border-radius: 40%;
+  padding-bottom: 2px;
 }

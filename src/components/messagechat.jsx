@@ -29,7 +29,7 @@ function Messagechat() {
   useEffect(
     () => {
       // tobottomref.current?.scrollIntoView();
-      setSocket(io("https://sock-hepv.onrender.com")); //https://sock-hepv.onrender.com //http://localhost:5000
+      setSocket(io("http://localhost:5000")); //https://sock-hepv.onrender.com //http://localhost:5000
       // socket?.emit("newUser", Contexts.us.userid);
       // chattyou();
     },
@@ -92,11 +92,11 @@ function Messagechat() {
           mid: Contexts.us.userid,
           mconv: Contexts.us.messageid_,
         });
-        // socket?.emit("sendText", {
-        //   message: textref.current.value,
-        //   mname: Contexts.us.username,
-        //   mid: Contexts.us.userid,
-        // });
+        socket?.emit("sendText", {
+          message: textref.current.value,
+          mname: Contexts.us.username,
+          mid: Contexts.us.userid,
+        });
       };
       func();
       // console.log(Contexts.us);

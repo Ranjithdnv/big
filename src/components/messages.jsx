@@ -115,7 +115,7 @@ function Messages({ chatss }) {
         </div>
         <div>
           {" "}
-          <Link to="/create " className="taggs">
+          <Link to="/create " className="taggs-create">
             {" "}
             <div>create</div>
           </Link>{" "}
@@ -126,13 +126,22 @@ function Messages({ chatss }) {
        <button type="button" onClick={upload}>Upload</button>
      </div>                 //       `https://bigserver.onrender.com/images/${chat.img}` */}
       <div className="im-age-container">
-        <div className="imagedesc">
-          {" "}
-          <img src="./god.jpg" className="imagedesc" />
+        <div className="im-age-containerhover">
+          <div className="imagedescover">
+            <div className="imagedesc">
+              {" "}
+              <img src="./god.jpg" className="imagedesc" />
+            </div>
+          </div>
+          <div className="video-text">
+            login to see all the photos and links . free contain to free people.
+            learn the advance way
+          </div>
         </div>
 
         {chat?.map((chat, index) => (
           <div
+            className="im-age-containerhover"
             onClick={() => messagechat({ messageid_: chat.conversation })}
             key={index}
           >
@@ -141,7 +150,7 @@ function Messages({ chatss }) {
             chat.img?.split(".")[1] === "png" ? (
               <div
                 // onClick={() => cllick(chat)}
-                className="imagedesc"
+                className="imagedescover"
               >
                 <img
                   className="imagedesc"

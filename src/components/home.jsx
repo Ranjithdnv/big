@@ -53,12 +53,13 @@ function Home() {
       <div className="header-home">
         <div className="head-motive">
           {" "}
-          <div className="motive-animation"> motive </div>{" "}
+          <div className="motive-animation"> Startrats </div>{" "}
         </div>
         <div>
           {" "}
           <Link className="taggs" to="/login">
-            account
+            {" "}
+            <div className="tagginner"></div>
           </Link>
         </div>
       </div>

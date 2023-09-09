@@ -72,7 +72,9 @@ function Login() {
           <button onClick={accountcreate}>login</button>
         </div>
         <div className="login-input">
-          <Link to="/signup">create account</Link>
+          <Link className="login-a" to="/signup">
+            no account? create account
+          </Link>
         </div>
       </div>
     </div>

@@ -4,7 +4,11 @@
   overflow: hidden;
   width: 300px;
   background-size: cover;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
+  transition: all 2s ease-out;
+}
+.imagedesc:hover {
+  transform: scale(1.3);
 }
 .video-text {
   margin-bottom: 1rem;
@@ -13,5 +17,5 @@
 .video-text:hover {
   /* transform: skewX(20deg);
   transform: skewY(10deg); */
-  transform: scale(1.6) skewY(-10deg);
+  color: rgb(223, 223, 224);
 }
