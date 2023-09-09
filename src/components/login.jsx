@@ -11,7 +11,7 @@ function Login() {
   const [text3, settext3] = useState("");
   const accountcreate = () => {
     // Contexts.user({ ...Contexts.us, userid: text1 });
-    // console.log(Contexts.us);
+    console.log(Contexts.us);
     axios
       .post(" https://bigserver.onrender.com/login", {
         userId: text1,
