@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../App.css";
 import "./stylees.css";
 import { CountContext } from "../context";
@@ -9,10 +10,11 @@ function Login() {
   const [text1, settext1] = useState("");
   const [text2, settext2] = useState("");
   const [text3, settext3] = useState("");
-  const accountcreate = () => {
+  const navilogin = useNavigate();
+  const accountcreate = async () => {
     // Contexts.user({ ...Contexts.us, userid: text1 });
     console.log(Contexts.us);
-    axios
+    await axios
       .post(" https://bigserver.onrender.com/login", {
         userId: text1,
         password: text2,
@@ -30,6 +32,7 @@ function Login() {
         });
       })
       .catch((er) => console.log(er));
+    navilogin("/");
   };
   return (
     <div className="login">

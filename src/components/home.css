@@ -193,7 +193,7 @@ button:hover {
 
   font-family: Arial, sans-serif;
   letter-spacing: 0.5rem;
-  animation: example 3s ease-out 1s infinite alternate;
+  animation: example 1s linear alternate-reverse infinite;
   /* width: 50%; */
   transition: all 0.5s linear infinite;
 }
@@ -222,27 +222,39 @@ button:hover {
     left: 0px;
     top: 0px;
 
-    transform: translateX(100px);
+    transform: translateX(0px);
   }
   25% {
     background-color: yellow;
     left: 200px;
     top: 0px;
   }
-  50% {
-    background-color: blue;
+  40% {
+    background-color: rgb(33, 5, 246);
     left: 200px;
     top: 200px;
-    transform: translateX(0px);
+    transform: translateX(50px);
   }
-  75% {
-    background-color: green;
+  65% {
+    background-color: rgb(8, 252, 65);
     left: 0px;
     top: 200px;
-    transform: translateX(0px);
+    transform: translateX(100px);
+  }
+  75% {
+    background-color: rgb(8, 252, 65);
+    left: 0px;
+    top: 200px;
+    transform: translateX(100px);
+  }
+  90% {
+    background-color: transparent;
+    left: 0px;
+    top: 0px;
+    transform: translateX(150px);
   }
   100% {
-    background-color: red;
+    background-color: transparent;
     left: 0px;
     top: 0px;
     transform: translateX(150px);

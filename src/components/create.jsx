@@ -1,9 +1,11 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { CountContext } from "../context";
+import { useNavigate } from "react-router-dom";
 
 function Create() {
   const Contexts = useContext(CountContext);
+  const navilogin = useNavigate();
   const [category, setcategory] = useState("");
   const [messagetext, setmessagetext] = useState("");
   const [text, settext] = useState("");
@@ -74,6 +76,7 @@ function Create() {
     //     console.log(res.data);
     //   })
     //   .catch((er) => console.log(er));
+    navilogin("/");
   };
   console.log(postdata);
   //

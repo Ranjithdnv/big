@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "../App.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function Signup() {
   const [text1, settext1] = useState("");
   const [text2, settext2] = useState("");
-  const accountcreate = () => {
-    axios
+  const navilogin = useNavigate();
+  const accountcreate = async () => {
+    await axios
       .post("https://bigserver.onrender.com/signup", {
         userId: text1,
         password: text2,
@@ -15,6 +17,7 @@ function Signup() {
         console.log(res.data);
       })
       .catch((er) => console.log(er));
+    navilogin("/");
   };
   return (
     <div className="login">

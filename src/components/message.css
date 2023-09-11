@@ -36,8 +36,8 @@
   background-size: contain;
   box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.8);
   color: white;
+  scale: 0.9;
   /* filter: blur(10px); */
-  scale: 1.4;
 }
 .video-text {
   text-align: center;
