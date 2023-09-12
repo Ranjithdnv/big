@@ -30,7 +30,7 @@ function Messagechat() {
   useEffect(
     () => {
       // tobottomref.current?.scrollIntoView();
-      setSocket(io("http://localhost:5000")); //https://sock-hepv.onrender.com //http://localhost:5000
+      setSocket(io("https://sock-hepv.onrender.com")); //https://sock-hepv.onrender.com //http://localhost:5000
       // socket?.emit("newUser", Contexts.us.userid);
       // chattyou();
     },
