@@ -184,7 +184,7 @@ function Messagechat() {
       console.log("worked");
     });
   }, [socket]);
-  console.log(file);
+  // console.log(file);
   // console.log(socket);
   return (
     <div className="mc-contain">
