@@ -30,6 +30,7 @@ body {
 }
 .area-text {
   width: 80%;
+  padding: 0.5rem;
 }
 .login-input {
   width: 300px;

@@ -10,6 +10,7 @@ function Messagechat() {
   const Contexts = useContext(CountContext);
   const textref = useRef("");
   const tobottomref = useRef("");
+  const [file, setFile] = useState();
   // useEffect(() => {});
   // const [text, settext] = useState("");
 
@@ -29,7 +30,7 @@ function Messagechat() {
   useEffect(
     () => {
       // tobottomref.current?.scrollIntoView();
-      setSocket(io("https://sock-hepv.onrender.com")); //https://sock-hepv.onrender.com //http://localhost:5000
+      setSocket(io("http://localhost:5000")); //https://sock-hepv.onrender.com //http://localhost:5000
       // socket?.emit("newUser", Contexts.us.userid);
       // chattyou();
     },
@@ -92,8 +93,11 @@ function Messagechat() {
           mid: Contexts.us.userid,
           mconv: Contexts.us.messageid_,
         });
+        const formData = new FormData();
+        formData.append("file", file);
         socket?.emit("sendText", {
           message: textref.current.value,
+          // message: file,
           mname: Contexts.us.username,
           mid: Contexts.us.userid,
         });
@@ -180,6 +184,7 @@ function Messagechat() {
       console.log("worked");
     });
   }, [socket]);
+  console.log(file);
   // console.log(socket);
   return (
     <div className="mc-contain">
