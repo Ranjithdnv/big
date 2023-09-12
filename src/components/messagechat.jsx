@@ -53,7 +53,7 @@ function Messagechat() {
   useEffect(() => {
     socket?.on("joinedroom", (b) => {
       console.log("joinffed");
-      // setmessage((prev) => [...prev, b]);
+      setmessage((prev) => [...prev, b]);
       console.log(b);
     });
   }, [socket]);
