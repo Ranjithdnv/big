@@ -30,7 +30,7 @@ function Messagechat() {
   useEffect(
     () => {
       // tobottomref.current?.scrollIntoView();
-      setSocket(io("https://sock-hepv.onrender.com")); //https://sock-hepv.onrender.com //http://localhost:5000
+      setSocket(io("http://localhost:5000")); //https://sock-hepv.onrender.com //http://localhost:5000
       // socket?.emit("newUser", Contexts.us.userid);
       // chattyou();
     },
@@ -44,12 +44,15 @@ function Messagechat() {
     tobottomref.current?.scrollIntoView();
   }, [message]);
   //
+
+  // seee late//
   useEffect(() => {
     socket?.emit("join", Contexts.us.messageid_);
     // setTimeout(() => {
     //   socket.emit("memberjoined");
     // }, 3000);
-  }, [message]);
+  }, [socket]);
+  //
   useEffect(() => {
     socket?.on("joinedroom", (b) => {
       console.log("joinffed");
@@ -57,9 +60,6 @@ function Messagechat() {
       console.log(b);
     });
   }, [socket]);
-
-  // seee late//
-
   //
   useEffect(() => {
     const cham = async () => {
@@ -94,8 +94,8 @@ function Messagechat() {
           mid: Contexts.us.userid,
           mconv: Contexts.us.messageid_,
         });
-        const formData = new FormData();
-        formData.append("file", file);
+        // const formData = new FormData();
+        // formData.append("file", file);
         socket?.emit("sendText", {
           message: textref.current.value,
           // message: file,
@@ -124,7 +124,7 @@ function Messagechat() {
           )
           .then((res) => {
             // console.log(res.data.messages);
-            setmessage(res.data.messages);
+            // setmessage(res.data.messages);
           })
           .catch((er) => console.log(er));
       }
@@ -181,7 +181,7 @@ function Messagechat() {
     socket?.on("getText", (data) => {
       // setNotifications((prev) => [...prev, data]);
       console.log(data);
-      // setmessage((prev) => [...prev, data]);
+      setmessage((prev) => [...prev, data]);
       console.log("worked");
     });
   }, [socket]);
