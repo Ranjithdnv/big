@@ -45,19 +45,20 @@ function Messagechat() {
   }, [message]);
   //
   useEffect(() => {
+    socket?.emit("join", Contexts.us.messageid_);
+    // setTimeout(() => {
+    //   socket.emit("memberjoined");
+    // }, 3000);
+  }, [message]);
+  useEffect(() => {
     socket?.on("joinedroom", (b) => {
       console.log("joinffed");
       // setmessage((prev) => [...prev, b]);
       console.log(b);
     });
-  }, [message]);
+  }, [socket]);
 
-  useEffect(() => {
-    socket?.emit("join", Contexts.us.messageid_);
-    // setTimeout(() => {
-    //   socket.emit("memberjoined");
-    // }, 3000);
-  }, [message]); // seee late//
+  // seee late//
 
   //
   useEffect(() => {
