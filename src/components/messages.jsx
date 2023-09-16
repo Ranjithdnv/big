@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "../App.css";
 import "./message.css";
 import { CountContext } from "../context";
+import Diversity1Icon from "@mui/icons-material/Diversity1";
 
 function Messages({ chatss }) {
   const Contexts = useContext(CountContext);
@@ -142,7 +143,7 @@ function Messages({ chatss }) {
         {chat?.map((chat, index) => (
           <div
             className="im-age-containerhover"
-            onClick={() => messagechat({ messageid_: chat.conversation })}
+            // onClick={() => messagechat({ messageid_: chat.conversation })}
             key={index}
           >
             {" "}
@@ -171,6 +172,15 @@ function Messages({ chatss }) {
                 />{" "}
               </div>
             )}
+            <div>
+              <Diversity1Icon />{" "}
+              <div
+                onClick={() => messagechat({ messageid_: chat.conversation })}
+              >
+                {" "}
+                join
+              </div>
+            </div>
             <div className="video-text">{chat.desc}</div>
           </div>
         ))}

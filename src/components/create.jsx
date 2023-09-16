@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { CountContext } from "../context";
 import { useNavigate } from "react-router-dom";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 
 function Create() {
   const Contexts = useContext(CountContext);
@@ -128,6 +129,9 @@ function Create() {
           {/* <div>
             <img src="" alt="" />
           </div> */}
+          <label htmlFor="fileupload">
+            <AttachFileIcon />
+          </label>
           <input
             type="text"
             value={text}
@@ -144,15 +148,14 @@ function Create() {
               setcategory(e.target.value);
             }}
           />
-          <button className="link" onClick={uploaddata}>
-            postme
-          </button>{" "}
-          <input
-            className="no-display"
-            id="fileupload"
-            type="file"
-            onChange={(e) => setFile(e.target.files[0])}
-          />
+          <div className="no-display">
+            {" "}
+            <input
+              id="fileupload"
+              type="file"
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+          </div>
           {uploadchange ? (
             <div className="link">uploading..</div>
           ) : (
@@ -160,6 +163,9 @@ function Create() {
               Upload
             </button>
           )}
+          <button className="link" onClick={uploaddata}>
+            postme
+          </button>{" "}
           {/* </div> */}
         </form>
       </div>

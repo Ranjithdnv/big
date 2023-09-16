@@ -5,12 +5,21 @@ import Detailsof from "./detailsof";
 import { CountContext } from "../context";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkModeTwoTone";
+import ChatTwoToneIcon from "@mui/icons-material/ChatTwoTone";
+import ContactSupportTwoToneIcon from "@mui/icons-material/ContactSupportTwoTone";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 function Home() {
   const Contexts = useContext(CountContext);
   const [info, setinfo] = useState(false);
   const [compo, setcompo] = useState(false);
   const [Detail, setDetail] = useState(true);
   const [World, setWorld] = useState(false);
+  const [colorbg, setcolorbg] = useState("#cacbd13d");
+  const [color, setcolor] = useState("red");
+  const [colortrue, setcolortrue] = useState(true);
   // // const [Four ,setFour]=useState(["sports","start_up","pay for work","find-bussiness-partner"])
   // const [district ,setdistrict]=useState(false)
   // const [chatss ,setchatss]=useState([])
@@ -26,9 +35,37 @@ function Home() {
     // const Statez={country:"india"}
     // Contexts.user(Statez)
   };
+  useEffect(() => {
+    const colors = () => {
+      console.log("0000000000000000000000");
+      if (colortrue) {
+        setcolorbg("#000000");
+        setcolor("#ffffffcf");
+      } else {
+        setcolorbg("#f9f9f905");
+        setcolor("black");
+      }
+      // const Statez={country:"india"}
+      // Contexts.user(Statez)
+    };
+    colors();
+  }, [colortrue]);
+  const colorstrue = () => {
+    setcolortrue(!colortrue);
+    console.log(colortrue);
+    // const Statez={country:"india"}
+    // Contexts.user(Statez)
+  };
   const setchats = (data) => {
     setchats(data);
     console.log(data);
+  };
+  const styleForButton = {
+    width: "2.3rem",
+    height: "2.3rem",
+    // margin: 20,
+    textAlign: "center",
+    display: "inline-block",
   };
   useEffect(() => {
     //  let userdata=JSON.parse(localStorage.getItem("userdata"))
@@ -55,11 +92,27 @@ function Home() {
           {" "}
           <div className="motive-animation"> Startrats </div>{" "}
         </div>
+        <div onClick={colorstrue}>
+          {colortrue ? (
+            <LightModeIcon style={styleForButton} />
+          ) : (
+            <DarkModeIcon style={styleForButton} />
+          )}
+        </div>
+        <div>
+          <ChatTwoToneIcon style={styleForButton} />
+        </div>
+        <div>
+          <ContactSupportTwoToneIcon style={styleForButton} />
+        </div>
+
+        <style>{"body {background-color:" + colorbg + "  }"}</style>
+        <style>{"body {color:  " + color + " }"}</style>
         <div>
           {" "}
           <Link className="taggs" to="/login">
-            {" "}
-            <div className="tagginner"></div>
+            <AccountCircleIcon style={styleForButton} />
+            {/* // <div className="tagginner"></div> */}
           </Link>
         </div>
       </div>

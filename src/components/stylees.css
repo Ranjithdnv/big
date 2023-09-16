@@ -1,11 +1,5 @@
 body {
-  background-color: rgb(67, 71, 66);
-  background-image: linear-gradient(
-    to right top,
-    rgb(2, 145, 228),
-    aqua,
-    transparent
-  );
+  background-color: rgba(234, 237, 235, 0.377);
 }
 .first {
   color: rgb(10, 0, 0);
@@ -18,7 +12,7 @@ body {
   margin-bottom: 2px;
 }
 .last {
-  color: rgb(89, 97, 97);
+  color: rgb(1, 19, 19);
 
   display: flex;
   justify-content: left;
@@ -44,9 +38,9 @@ body {
 button {
   border-radius: 1rem;
 
-  width: 100%;
+  /* width: 100%; */
   box-sizing: border-box;
-  color: #1ab5ee;
+  /* color: #1ab5ee; */
   text-align: center;
   font-weight: bold;
   height: 2rem;
@@ -82,6 +76,7 @@ button {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  /* color: white; */
   letter-spacing: 0.5rem;
   border: pink 38px solid;
 }
@@ -157,7 +152,7 @@ button {
 }
 .login-input .login-a {
   padding-top: 3px;
-  color: aliceblue;
+  /* color: aliceblue; */
   /* background-color: aliceblue; */
 }
 .msg {
@@ -177,5 +172,9 @@ button {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  /* color: white; */
   font-weight: bolder;
+}
+.no-display {
+  display: none;
 }
