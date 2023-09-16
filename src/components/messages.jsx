@@ -172,9 +172,10 @@ function Messages({ chatss }) {
                 />{" "}
               </div>
             )}
-            <div>
+            <div className="join">
               <Diversity1Icon />{" "}
               <div
+                className="join-green"
                 onClick={() => messagechat({ messageid_: chat.conversation })}
               >
                 {" "}
