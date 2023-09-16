@@ -241,7 +241,7 @@ button:hover {
     left: 0px;
     top: 0px;
 
-    transform: translateX(0px);
+    /* transform: translateX(0px); */
   }
   25% {
     background-color: yellow;
@@ -252,30 +252,30 @@ button:hover {
     background-color: rgb(33, 5, 246);
     left: 200px;
     top: 200px;
-    transform: translateX(50px);
+    /* transform: translateX(50px); */
   }
   65% {
     background-color: rgb(8, 252, 65);
     left: 0px;
     top: 200px;
-    transform: translateX(100px);
+    /* transform: translateX(100px); */
   }
   75% {
     background-color: rgb(8, 252, 65);
     left: 0px;
     top: 200px;
-    transform: translateX(100px);
+    /* transform: translateX(100px); */
   }
   90% {
     background-color: transparent;
     left: 0px;
     top: 0px;
-    transform: translateX(150px);
+    /* transform: translateX(150px); */
   }
   100% {
     background-color: transparent;
     left: 0px;
     top: 0px;
-    transform: translateX(150px);
+    /* transform: translateX(150px); */
   }
 }
