@@ -19,7 +19,7 @@ function Home() {
   const [World, setWorld] = useState(false);
   const [colorbg, setcolorbg] = useState("#cacbd13d");
   const [color, setcolor] = useState("red");
-  const [colortrue, setcolortrue] = useState(true);
+  const [colortrue, setcolortrue] = useState(false);
   // // const [Four ,setFour]=useState(["sports","start_up","pay for work","find-bussiness-partner"])
   // const [district ,setdistrict]=useState(false)
   // const [chatss ,setchatss]=useState([])

@@ -161,6 +161,14 @@ button {
 .message-grow {
   min-height: 100vh;
 }
+.con {
+  font-size: larger;
+  height: 1em !important;
+  width: 1em !important;
+  display: inline-block;
+  align-items: center;
+  text-align: center;
+}
 .yourname {
   background-image: linear-gradient(
     to top right,

@@ -6,6 +6,10 @@ import "../App.css";
 import "./message.css";
 import { CountContext } from "../context";
 import Diversity1Icon from "@mui/icons-material/Diversity1";
+import CreateRoundedIcon from "@mui/icons-material/CreateRounded";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import MediationIcon from "@mui/icons-material/Mediation";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 
 function Messages({ chatss }) {
   const Contexts = useContext(CountContext);
@@ -95,7 +99,7 @@ function Messages({ chatss }) {
   };
   // console.log((chat[3].img).split(".")[1])
   console.log(0);
-  console.log(chat[0]);
+  console.log(chat);
   return (
     <>
       <div className="fourtop">
@@ -125,43 +129,44 @@ function Messages({ chatss }) {
       {/* <div>
        <input type="file" onChange={(e) => setFile(e.target.files[0])}/>
        <button type="button" onClick={upload}>Upload</button>
-     </div>                 //       `https://bigserver.onrender.com/images/${chat.img}` */}
+     </div>   
+                   //       `https://bigserver.onrender.com/images/${chat.img}` */}
       <div className="im-age-container">
-        <div className="im-age-containerhover">
-          <div className="imagedescover">
-            <div className="imagedesc">
-              {" "}
-              <img src="./god.jpg" className="imagedesc" />
-            </div>
-          </div>
-          <div className="video-text">
-            login to see all the photos and links . free contain to free people.
-            learn the advance way
-          </div>
-        </div>
-
         {chat?.map((chat, index) => (
           <div
             className="im-age-containerhover"
             // onClick={() => messagechat({ messageid_: chat.conversation })}
             key={index}
           >
-            {" "}
-            {chat.img?.split(".")[1] === "jpg" ||
-            chat.img?.split(".")[1] === "png" ? (
-              <div
-                // onClick={() => cllick(chat)}
-                className="imagedescover"
-              >
-                <img
-                  className="imagedesc"
-                  src={
-                    //"https://zzsocapi.onrender.com/images/1694067416061_swim.jpg"
-                    `https://zzsocapi.onrender.com/images/${chat.img}`
-                  }
-                  alt=""
-                />
+            {chat.imgss && (
+              <div className="imagedescover">
+                {" "}
+                <img className="imagedesc" src={chat.imgss} alt="" />
               </div>
+            )}{" "}
+            {/* {chat.img?.split(".")[1] === "jpg" ||
+            chat.img?.split(".")[1] === "png" ? (
+              <>
+                <div
+                  // onClick={() => cllick(chat)}
+                  className="imagedescover"
+                >
+                  <img
+                    className="imagedesc"
+                    src={
+                      //"https://zzsocapi.onrender.com/images/1694067416061_swim.jpg"
+                      `https://zzsocapi.onrender.com/images/${chat.img}`
+                    }
+                    alt=""
+                  />
+                </div>
+                <div
+                  // onClick={() => cllick(chat)}
+                  className="imagedescover"
+                >
+                  <img className="imagedesc" src={chat.imgss} alt="" />
+                </div>
+              </>
             ) : (
               <div>
                 <video
@@ -170,8 +175,11 @@ function Messages({ chatss }) {
                   loop
                   src={`https://zzsocapi.onrender.com/images/${chat.img}`}
                 />{" "}
+                {chat.imgss && (
+                  <img className="imagedesc" src={chat.imgss} alt="" />
+                )}{" "}
               </div>
-            )}
+            )} */}
             <div className="join">
               <Diversity1Icon />{" "}
               <div
@@ -181,8 +189,42 @@ function Messages({ chatss }) {
                 {" "}
                 join
               </div>
+              <div>
+                {chat.insta && (
+                  <>
+                    <a href={chat.insta}>
+                      <InstagramIcon />
+                    </a>
+                  </>
+                )}
+              </div>
+              <div>
+                {chat.youtube && (
+                  <>
+                    <a href={chat.youtube}>
+                      <YouTubeIcon />
+                    </a>
+                  </>
+                )}
+              </div>{" "}
+              <div>
+                {chat.other && (
+                  <>
+                    <a href={chat.other}>
+                      <MediationIcon />
+                    </a>
+                  </>
+                )}
+              </div>
             </div>
-            <div className="video-text">{chat.desc}</div>
+            <div className="video-text">
+              <div
+              //style={{ textAlign: "center" }}
+              >
+                <CreateRoundedIcon className="con" />
+              </div>
+              <div className="video-text">{chat.desc}</div>
+            </div>
           </div>
         ))}
         {/* <img src="http://localhost:3001/images/1693043656945_splash.jpg" height="100px" width="20px" alt="" />

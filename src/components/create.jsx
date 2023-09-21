@@ -10,9 +10,25 @@ function Create() {
   const [category, setcategory] = useState("");
   const [messagetext, setmessagetext] = useState("");
   const [text, settext] = useState("");
+  const [youtube, setyoutube] = useState("");
+  const [otherz, setotherz] = useState("");
+  const [insta, setinsta] = useState("");
   const [postdata, setpostdata] = useState([]);
   const [filename, setfilename] = useState([]);
   const [uploadchange, setuploadchange] = useState(false);
+  const [imgs, setImgs] = useState();
+
+  const handleChnage = (e) => {
+    setFile(e.target.files[0]);
+    console.log(e.target.files);
+    const data = new FileReader();
+    data.addEventListener("load", () => {
+      setImgs(data.result);
+    });
+    data.readAsDataURL(e.target.files[0]);
+  };
+
+  console.log(imgs);
   const submit = () => {};
   const [file, setFile] = useState();
   const upload = async () => {
@@ -50,11 +66,19 @@ function Create() {
           category: category,
           conversation: res.data.post._id,
           message: res.data.post._id,
+          insta: insta,
+          youtube: youtube,
+          other: otherz,
+          imgss: imgs,
         };
         console.log(data);
         setpostdata([...postdata, data]);
         await axios
-          .post("https://bigserver.onrender.com/", data)
+          .post("  https://bigserver.onrender.com", data, {
+            headers: {
+              "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+            },
+          }) //https://bigserver.onrender.com/
           .then((res) => {
             console.log(res.data);
           })
@@ -153,9 +177,34 @@ function Create() {
             <input
               id="fileupload"
               type="file"
-              onChange={(e) => setFile(e.target.files[0])}
+              // onChange={(e) => setFile(e.target.files[0])}
+              onChange={handleChnage}
             />
           </div>
+          <input
+            type="text"
+            value={insta}
+            placeholder="insta-link"
+            onChange={(e) => {
+              setinsta(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            value={youtube}
+            placeholder="youtube-link"
+            onChange={(e) => {
+              setyoutube(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            value={otherz}
+            placeholder="other-link"
+            onChange={(e) => {
+              setotherz(e.target.value);
+            }}
+          />
           {uploadchange ? (
             <div className="link">uploading..</div>
           ) : (
@@ -166,6 +215,11 @@ function Create() {
           <button className="link" onClick={uploaddata}>
             postme
           </button>{" "}
+          {/* <div>
+            <input type="file" onChange={handleChnage} />
+            <br />
+            <img src={imgs} height="200px" width="200px" />
+          </div> */}
           {/* </div> */}
         </form>
       </div>
