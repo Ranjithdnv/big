@@ -63,7 +63,7 @@ function Create() {
           ...Contexts.us,
           desc: text,
           img: filename[filename.length * 1 - 1],
-          category: category,
+          // category: category,
           conversation: res.data.post._id,
           message: res.data.post._id,
           insta: insta,

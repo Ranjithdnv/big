@@ -1,7 +1,7 @@
 .im-age-container {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   row-gap: 1rem;
   /* flex-wrap: wrap; */
   /* color: #000; */

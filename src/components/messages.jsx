@@ -13,6 +13,9 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 
 function Messages({ chatss }) {
   const Contexts = useContext(CountContext);
+  const [categorydatalist, setcategorydatalist] = useState("");
+  const [categoryselect, setcategoryselect] = useState("");
+  const [categorydataselect, setcategorydataselect] = useState("");
   const [chat, setchat] = useState([]);
   const [Four, setFour] = useState([
     "sports",
@@ -31,25 +34,36 @@ function Messages({ chatss }) {
   //   }
   const getpostsfilter = async (e) => {
     e.preventDefault();
+    const succon = Contexts.us;
+    Contexts.user({ ...succon, sub_category: categorydatalist });
+
     try {
       // console.log(chatss)
-      const res = await axios.post(
-        "https://bigserver.onrender.com/filter",
-        Contexts.us
-      ); //   https://bigserver.onrender.com/
+      const res = await axios.post("https://bigserver.onrender.com/filter", {
+        ...Contexts.us,
+
+        sub_category: categorydatalist,
+      }); //   https://bigserver.onrender.com/
       console.log(res.data);
       setchat(res.data);
     } catch (err) {
       console.log(err);
     }
+    let obj = JSON.stringify({ ...succon, sub_category: categorydatalist });
+    localStorage.setItem("userdata", obj);
   };
   const fourselect = async (value) => {
-    console.log({ ...Contexts.us, ...value });
+    Contexts.user({ ...Contexts.us, ...value });
+    let obj = JSON.stringify({ ...Contexts.us, ...value });
+    localStorage.setItem("userdata", obj);
+    setcategoryselect(value.category);
+
     try {
       const res = await axios.post("https://bigserver.onrender.com/filter", {
         ...Contexts.us,
         ...value,
-      }); //   https://bigserver.onrender.com/
+      });
+      //   https://bigserver.onrender.com/
       console.log(res.data);
       setchat(res.data);
     } catch (err) {
@@ -125,6 +139,51 @@ function Messages({ chatss }) {
             <div>create</div>
           </Link>{" "}
         </div>{" "}
+      </div>
+      <div>
+        select in {categoryselect}
+        <input
+          onChange={(e) => {
+            setcategorydatalist(e.target.value);
+          }}
+          list={categoryselect}
+          type="text"
+        />
+        <datalist id="sports">
+          <option value="sports" />
+          <option value="volleyball" />
+          <option value="football" />
+          <option value="kabbadi" />
+          <option value="tennis" />
+        </datalist>
+        <datalist id="start_up">
+          <option value="edu-tech" />
+          <option value="training" />
+          <option value="bio-medical" />
+          <option value="vehicels" />
+          <option value="electricity-production" />
+        </datalist>{" "}
+        <datalist id="pay for work">
+          <option value="sports-" />
+          <option value="tomorrow-" />
+          <option value="this sunday" />
+          <option value="this week" />
+          <option value="this month" />
+        </datalist>{" "}
+        <datalist id="not-in-youtube">
+          <option value="sports-" />
+          <option value="tomorrow-" />
+          <option value="this sunday" />
+          <option value="this week" />
+          <option value="this month" />
+        </datalist>{" "}
+        <datalist id="donate">
+          <option value="no home" />
+          <option value="education" />
+          <option value="health" />
+          <option value="entertainment" />
+          <option value="betterlife" />
+        </datalist>
       </div>
       {/* <div>
        <input type="file" onChange={(e) => setFile(e.target.files[0])}/>
